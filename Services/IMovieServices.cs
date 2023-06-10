@@ -17,7 +17,7 @@ namespace MovieRentalAppProject.Services
         UserModel  GetUserWithMovie(int userId);
 
 
-
+        bool DeleteBookingForUser(int userId, int bookingId);
 
 
 

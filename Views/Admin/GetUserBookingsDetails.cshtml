@@ -1,0 +1,49 @@
+﻿@model MovieRentalAppProject.Models.UserModel
+
+
+<h1>User Profile</h1>
+
+<p><strong>User ID:</strong> @Model.userId</p>
+<p><strong>Name:</strong> @Model.userName</p>
+<p><strong>Email:</strong> @Model.userEmail</p>
+
+<h2>My Bookings</h2>
+
+@if (Model.bookings.Count > 0)
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Booking ID</th>
+                <th>Movie ID</th>
+                <th>Movie Name</th>
+                <th>Booking Date</th>
+                
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var booking in Model.bookings)
+            {
+                <tr>
+                    <td>@booking.bookingId</td>
+                    <td>@booking.movieId</td>
+                    <td>@booking.movie</td>
+                    <td>@booking.bookingTime</td>
+                    
+                    <td>
+                        <a href="@Url.Action("DeleteConfirmedBooking", "Booking", new {bookingId = booking.bookingId })" class="btn btn-danger">Delete</a>
+                  
+                    </td>
+                    <td>
+                        <a class="btn btn-danger" asp-controller="Booking" asp-action="DeleteBookings" asp-route-id="@booking.bookingId"> Delete </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No bookings found for this user.</p>
+}

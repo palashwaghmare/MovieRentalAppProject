@@ -77,5 +77,13 @@ namespace MovieRentalAppProject.Services
         {
             return _movieRepository.GetUserWithMovie(userId);
         }
+
+
+        public bool DeleteBookingForUser (int userId , int bookingId)
+        {
+            return _movieRepository.DeleteBookingForUser(userId, bookingId);    
+        }
+
+        
     }
 }

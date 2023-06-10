@@ -32,7 +32,7 @@
                     <td>@booking.userId</td>
                     <td>@booking.bookingTime</td>
                     <td>
-                        <a class="btn btn-danger" asp-controller="Booking" asp-action="BookingDetails" asp-route-id="@booking.movieId"> View Details </a>
+                        <a class="btn btn-danger" asp-controller="Admin" asp-action="GetUserBookingsDetails" asp-route-id="@booking.userId"> View Details </a>
                     </td>
                 </tr>
             }

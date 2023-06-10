@@ -19,18 +19,25 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
             <div class="form-group">
-                <label asp-for="bookingTime" class="control-label"></label>
-                <input readonly asp-for="bookingTime" class="form-control" />
+                <p> <h3>Your Booking for this movie will be confirmed .</h3> 
+                    <h4>Please Confrim below</h4>
+                </p>
+            </div>
+
+
+            <div class="form-group">
+                @*<label asp-for="bookingTime" class="control-label"></label>*@
+                <input type="hidden" asp-for="bookingTime" class="form-control" />
                 <span asp-validation-for="bookingTime" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="userId" class="control-label"></label>
-                <input readonly asp-for="userId" class="form-control" asp-items="ViewBag.userId"></input>
+                @*<label asp-for="userId" class="control-label"></label>*@
+                <input type="hidden" asp-for="userId" class="form-control" asp-items="ViewBag.userId"></input>
                 <span asp-validation-for="userId" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="movieId" class="control-label"></label>
-                <input readonly asp-for="movieId" class="form-control" asp-items="ViewBag.movieId"></input>
+                @*<label asp-for="movieId" class="control-label"></label>*@
+                <input type="hidden" asp-for="movieId" class="form-control" asp-items="ViewBag.movieId"></input>
                 <span asp-validation-for="movieId" class="text-danger"></span>
             </div>
 
@@ -53,15 +60,15 @@
 
 
             <div class="form-group">
-                <input type="submit" value="Buy" class="btn btn-primary" />
+                <input type="submit" value="Confirm" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
 
-<div>
+@*<div>
     <a asp-action="Index">Back to List</a>
-</div>
+</div>*@
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

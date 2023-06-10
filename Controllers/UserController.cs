@@ -82,7 +82,11 @@ namespace MovieRentalAppProject.Controllers
             return RedirectToAction("LogIn");
         }
 
-
+        public IActionResult GetMoviesBookedByUser(int id)
+        {
+            var movies = _userServices.GetMoviesBookedByUser(id);
+            return View(movies);    
+        }
 
 
     }

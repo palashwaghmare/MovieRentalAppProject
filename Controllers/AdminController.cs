@@ -134,15 +134,46 @@ namespace MovieRentalAppProject.Controllers
             return View(bookings);
         }
 
-        public IActionResult GetUserBookingsDetails(int id)
+        [HttpGet]
+        public IActionResult GetUserBookingsDetails(int id )
         {
             UserModel user = _movieServices.GetUserWithMovie(id);
+           // MovieModel movie = _movieServices.GetMovieById();
+
+
                 return View(user);
         }
 
+        [HttpDelete]
         public IActionResult DeleteBookingForUser(int uid, int bid)
         {
-            return View();
+            bool delete = _movieServices.DeleteBookingForUser(uid, bid);
+
+            if (delete)
+            {
+                return RedirectToAction("GetAllBookings");
+            }
+
+            return NotFound();
+        }
+
+        [HttpGet]
+        public IActionResult DeleteBookings(int id)
+        {
+            BookingModel booking = _bookingsServices.GetBookingById(id);
+            if (booking == null)
+            {
+                return NotFound();
+            }
+
+            return View(booking);
+        }
+
+        [HttpPost]
+        public IActionResult DeleteConfirmedBooking(BookingModel model)
+        {
+            _bookingsServices.DeleteBooking(model.bookingId);
+            return RedirectToAction("Allmovies");
         }
 
 

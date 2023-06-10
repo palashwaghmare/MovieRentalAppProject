@@ -38,6 +38,13 @@ namespace MovieRentalAppProject.Repository
 
         
 
+        public List<MovieModel> GetMoviesBookedByUser(int id)
+        {
+            return _movieDbContext.bookings.Where(b => b.userId == id).Select(b=> b.movie).ToList();
+        }
+
+
+
         /*public async Task<UserModel> GetUserByUsernameAsync(string username)
         {
             return await _movieDbContext.users.FirstOrDefaultAsync(u => u.userName == username);

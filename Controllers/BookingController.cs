@@ -39,7 +39,7 @@ namespace MovieRentalAppProject.Controllers
 
             
                 _bookingService.AddBooking(booking);
-                return RedirectToAction("AllmoviesUser");
+            return RedirectToAction("AllmoviesUser","User");
             
 
 
@@ -72,7 +72,7 @@ namespace MovieRentalAppProject.Controllers
             return View(booking);
         }
 
-       /* [HttpGet]
+        [HttpGet]
         public IActionResult DeleteBookings(int id)
         {
             BookingModel booking = _bookingService.GetBookingById(id);
@@ -85,11 +85,11 @@ namespace MovieRentalAppProject.Controllers
         }
 
         [HttpPost]
-        public IActionResult DeleteConfirmedBooking(int id)
+        public IActionResult DeleteConfirmedBooking(BookingModel model)
         {
-            _bookingService.DeleteBooking(id);
-            return RedirectToAction("Index");
-        }*/
+            _bookingService.DeleteBooking(model.bookingId);
+            return RedirectToAction("Allmovies");
+        }
 
 
     }

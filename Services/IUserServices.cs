@@ -12,8 +12,7 @@ namespace MovieRentalAppProject.Services
 
         UserModel CheckLogin(string userName, string password);
 
-        // string GetPassword(string password);
-
-        //Task<UserModel> LoginAsync(string username, string password);   
+        List<MovieModel> GetMoviesBookedByUser(int id);
+   
     }
 }

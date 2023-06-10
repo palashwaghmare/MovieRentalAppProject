@@ -10,6 +10,7 @@
 <div>
     <h4>BookingModel</h4>
     <hr />
+    <form asp-action="DeleteConfirmedBooking" asp-controller="Admin" method="post">
     <dl class="row">
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.bookingTime)
@@ -31,7 +32,7 @@
         </dd>
     </dl>
     
-    <form asp-action="DeleteBookings">
+    
         <input type="hidden" asp-for="bookingId" />
         <input type="submit" value="Delete" class="btn btn-danger" /> |
         <a asp-action="Index">Back to List</a>

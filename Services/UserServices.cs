@@ -55,6 +55,16 @@ namespace MovieRentalAppProject.Services
         
         }
 
+
+        public List<MovieModel> GetMoviesBookedByUser(int id)
+        {
+            return _userRepository.GetMoviesBookedByUser(id);
+        }
+
+
+
+
+
         /*public string GetPassword(string password)
         {
 

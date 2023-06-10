@@ -16,7 +16,7 @@
         <p class="card-text"><strong>Director : </strong> @Model.director</p>
         <p class="card-text"><strong>Actor : </strong> @Model.actors</p>
         <a class="btn btn-warning" asp-controller="Booking" asp-action="AddBookings" asp-route-id="@Model.movieId">Buy Now</a>
-        <a class="btn btn-danger" asp-action="DeleteMovies" asp-route-id="@Model.movieId">Delete</a>
+        <a class="btn btn-danger" asp-action="DeleteMovies" asp-route-id="@Model.movieId">Cancel</a>
         <a class="btn btn-secondary" asp-action="Allmovies">Back to All Movies</a>
         
     </div>
