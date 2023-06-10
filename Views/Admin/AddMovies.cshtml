@@ -1,0 +1,66 @@
+﻿@model MovieRentalAppProject.Models.MovieModel
+@using MovieRentalAppProject.Constants
+@{
+    ViewData["Title"] = "AddMovies";
+}
+
+<h1>Add New Movies</h1>
+
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="AddMovies" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="movieName" class="control-label"></label>
+                <input asp-for="movieName" class="form-control" />
+                <span asp-validation-for="movieName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="movieCategory" class="control-label"></label>
+                <select asp-for="movieCategory" class="form-control" asp-items="Html.GetEnumSelectList<MovieCategory>()">
+                    <option value="">Choose Category</option>
+                </select>
+                <span asp-validation-for="movieCategory" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="rentPrice" class="control-label"></label>
+                <input asp-for="rentPrice" class="form-control" />
+                <span asp-validation-for="rentPrice" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="director" class="control-label"></label>
+                <input asp-for="director" class="form-control" />
+                <span asp-validation-for="director" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="actors" class="control-label"></label>
+                <input asp-for="actors" class="form-control" />
+                <span asp-validation-for="actors" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="ImageData" class="control-label"></label>
+                <input asp-for="ImageData" type="file" class="form-control" name="imageFile" />
+                <span asp-validation-for="ImageData" class="text-danger"></span>
+            </div>
+            <br />
+            <div class="form-group">
+                <input type="submit" value="Add Movie" class="btn btn-primary" />
+                <a class="btn btn-warning" asp-action="Allmovies"> My List </a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@*<div>
+    <a asp-action="Allmovies">Back to List</a>
+</div>
+*@
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

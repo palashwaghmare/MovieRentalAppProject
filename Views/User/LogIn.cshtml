@@ -1,0 +1,126 @@
+﻿@model MovieRentalAppProject.Models.UserModel
+
+@{
+    ViewData["Title"] = "Log In Page";
+}
+
+
+
+
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h1 class="card-title text-center">Sign In</h1>
+                    <hr />
+
+                    <form asp-controller="User" asp-action="LogIn" method="post">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                        @if (TempData["ErrorMessage"] != null)
+                        {
+                            <div class="alert alert-danger" role="alert">
+                                @TempData["ErrorMessage"]
+                            </div>
+                        }
+
+                       
+                        <div class="form-group">
+                            <label asp-for="userName" class="control-label">Username</label>
+                            <input asp-for="userName" class="form-control" placeholder="Enter Username " />
+                            <span asp-validation-for="userName" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="userPassword" class="control-label">Password</label>
+                            <input asp-for="userPassword" type="password" class="form-control" placeholder="Enter Password" />
+                            <span asp-validation-for="userPassword" class="text-danger"></span>
+                        </div>
+
+                        <div class="centerBlock">
+                            <div class="form-group">
+                                <br />
+                                <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+
+                            </div>
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+   
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@*@model MovieRentalAppProject.Models.UserModel
+
+@{
+    ViewData["Title"] = "LogIn";
+}
+
+<h1>LogIn</h1>
+
+<h4>UserModel</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-controller="User" asp-action="LogIn" method="post">
+            @if(TempData["ErrorMessage"]!= null)
+            {
+                <div class="alert alert-danger" role="alert">
+                    @TempData["ErrorMessage"]
+                </div>
+            }
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="userName" class="control-label"></label>
+                <input asp-for="userName" class="form-control" />
+                <span asp-validation-for="userName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="userPassword" class="control-label"></label>
+                <input asp-for="userPassword" class="form-control" />
+                <span asp-validation-for="userPassword" class="text-danger"></span>
+            </div>
+           
+            <div class="form-group">
+                <input type="submit" value="Log In" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+*@

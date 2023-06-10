@@ -1,0 +1,44 @@
+﻿@model MovieRentalAppProject.Models.BookingModel
+
+@{
+    ViewData["Title"] = "EditBookings";
+}
+
+<h1>EditBookings</h1>
+
+<h4>BookingModel</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="EditBookings">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="bookingId" />
+            <div class="form-group">
+                <label asp-for="bookingTime" class="control-label"></label>
+                <input asp-for="bookingTime" class="form-control" />
+                <span asp-validation-for="bookingTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="userId" class="control-label"></label>
+                <select asp-for="userId" class="form-control" asp-items="ViewBag.userId"></select>
+                <span asp-validation-for="userId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="movieId" class="control-label"></label>
+                <select asp-for="movieId" class="form-control" asp-items="ViewBag.movieId"></select>
+                <span asp-validation-for="movieId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

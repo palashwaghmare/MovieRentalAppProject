@@ -1,0 +1,117 @@
+﻿@model List<MovieRentalAppProject.Models.BookingModel>
+
+@{
+    ViewData["Title"] = "Movie Bookings";
+}
+
+<h1>Movie Bookings</h1>
+
+@if (Model.Count > 0)
+{
+    <h3>Total Bookings: @Model.Count</h3>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Booking ID</th>
+                <th>Movie ID</th>
+                
+                <th>User ID</th>
+                <th>Booking Date</th>
+                <th>Action</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var booking in Model)
+            {
+                <tr>
+                    <td>@booking.bookingId</td>
+                    <td>@booking.movieId</td>
+                    
+                    <td>@booking.userId</td>
+                    <td>@booking.bookingTime</td>
+                    <td>
+                        <a class="btn btn-danger" asp-controller="Booking" asp-action="BookingDetails" asp-route-id="@booking.movieId"> View Details </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No bookings found for this movie.</p>
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@*@model IEnumerable<MovieRentalAppProject.Models.BookingModel>
+
+@{
+    ViewData["Title"] = "Bookings";
+}
+
+<h1>Bookings</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.bookingTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.user)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.movie)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.bookingTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.user.confirmPassword)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.movie.movieId)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.bookingId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.bookingId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.bookingId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+*@

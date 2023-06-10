@@ -1,0 +1,68 @@
+﻿@model MovieRentalAppProject.Models.BookingModel
+
+@{
+    ViewData["Title"] = "AddBookings";
+}
+
+<h1>Confirm Booking</h1>
+
+<h4></h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        @*<div>
+            <p>Current Date and Time: @DateTime.Now</p>
+            <p>Movie Name: @Model.movieId</p>
+            <p>User ID: @Context.Session.GetString("UserID")</p>
+        </div>*@
+        <form asp-action="AddBookings" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <label asp-for="bookingTime" class="control-label"></label>
+                <input readonly asp-for="bookingTime" class="form-control" />
+                <span asp-validation-for="bookingTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="userId" class="control-label"></label>
+                <input readonly asp-for="userId" class="form-control" asp-items="ViewBag.userId"></input>
+                <span asp-validation-for="userId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="movieId" class="control-label"></label>
+                <input readonly asp-for="movieId" class="form-control" asp-items="ViewBag.movieId"></input>
+                <span asp-validation-for="movieId" class="text-danger"></span>
+            </div>
+
+
+
+          @* <div class="form-group">
+                <label asp-for="bookingTime" class="control-label"></label>
+                <input type="hidden" asp-for="bookingTime" class="form-control" value="@DateTime.Now" />
+                
+            </div>
+            <div class="form-group">
+                <label asp-for="userId" class="control-label"></label>
+                <input type="hidden" asp-for="userId" class ="form-control" value="@Context.Session.GetString("UserId")" />
+            </div>
+            <div class="form-group">
+                <label asp-for="movieId" class="control-label"></label>
+                <input type="hidden" asp-for="movieId" value="@Model.movieId" class="form-control" />
+               
+            </div>*@
+
+
+            <div class="form-group">
+                <input type="submit" value="Buy" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

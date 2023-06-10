@@ -1,0 +1,74 @@
+﻿@model IEnumerable<MovieRentalAppProject.Models.MovieModel>
+
+@{
+    ViewData["Title"] = "Allmovies";
+}
+
+<h1>Admin Protal</h1>
+<h4>Released Movies</h4>
+
+<p>
+    <a class="btn btn-secondary" asp-action="AddMovies">Add Movie</a>
+</p>
+
+<div class="row">
+    @foreach (var movie in Model)
+    {
+        <div class="col-md-4">
+            <div class="card mb-4">
+                <img src="data:image/png;base64,@Convert.ToBase64String(movie.ImageData)" class="card-img-top" alt="@movie.movieId">
+                <div class="card-body">
+                    <h5 class="card-title"><strong>Name : </strong>@movie.movieName</h5>
+                    <p class="card-text"><strong>Category : </strong>@movie.movieCategory</p>
+                    <p class="card-text"><strong>Price : </strong> @movie.rentPrice</p>
+                    <p class="card-text"><strong>Director : </strong> @movie.director</p>
+                    <p class="card-text"><strong>Actor : </strong> @movie.actors</p>
+                    <a class="btn btn-warning"  asp-action="UpdateMovies" asp-route-id="@movie.movieId"> Update </a>
+                    <a class="btn btn-danger" asp-action="DeleteMovies" asp-route-id="@movie.movieId"> Delete </a>
+                    <a class="btn btn-warning" asp-action="Bookings" asp-route-id="@movie.movieId"> Bookings </a>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+
+
+
+
+@*<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.movieName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.movieCategory)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.rentPrice)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.movieName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.movieCategory)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.rentPrice)
+            </td>
+            <td>
+                <a asp-action="UpdateMovies" asp-route-id="@item.movieId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.movieId">Details</a> |
+                <a asp-action="DeleteMovies" asp-route-id="@item.movieId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>*@
