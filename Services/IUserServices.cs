@@ -13,6 +13,9 @@ namespace MovieRentalAppProject.Services
         UserModel CheckLogin(string userName, string password);
 
         List<MovieModel> GetMoviesBookedByUser(int id);
-   
+
+        UserModel GetUserProfile(int userId);
+        bool UpdateUserProfile(UserModel model);
+
     }
 }

@@ -1,5 +1,6 @@
 ﻿using MovieRentalAppProject.Models;
 using MovieRentalAppProject.Repository;
+using NuGet.Protocol.Core.Types;
 
 namespace MovieRentalAppProject.Services
 {
@@ -63,6 +64,16 @@ namespace MovieRentalAppProject.Services
 
 
 
+
+        public UserModel GetUserProfile(int userId)
+        {
+            return _userRepository.GetUserProfile(userId);
+        }
+
+        public bool UpdateUserProfile(UserModel model)
+        {
+            return _userRepository.UpdateUserProfile(model);
+        }
 
 
         /*public string GetPassword(string password)

@@ -9,9 +9,11 @@ namespace MovieRentalAppProject.Models
         public int userId { get; set; }
         [Required]
         public string firstName { get; set; }
-
+        [Required]
         public string lastName { get; set; }
+        [Required]
         public string userName { get; set; }
+        [Required]
         public string userPassword { get; set; }
         [Required]
         [Compare("userPassword")]

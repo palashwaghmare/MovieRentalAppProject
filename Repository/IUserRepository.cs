@@ -12,7 +12,9 @@ namespace MovieRentalAppProject.Repository
         //Task<UserModel> GetUserByUsernameAsync(string username);
 
         List<MovieModel> GetMoviesBookedByUser(int id);
-        
+
+        UserModel GetUserProfile(int userId);
+        bool UpdateUserProfile(UserModel model);
 
     }
 }

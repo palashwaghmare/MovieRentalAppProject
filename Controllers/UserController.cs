@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using MovieRentalAppProject.Models;
 using MovieRentalAppProject.Services;
 
@@ -64,12 +65,14 @@ namespace MovieRentalAppProject.Controllers
             else
             {
                 UserModel user = _userServices.CheckLogin(userModel.userName, userModel.userPassword);
-                HttpContext.Session.SetString("UserName", user.userName);
-
-                HttpContext.Session.SetInt32("UserId", user.userId);
 
                 if (user != null)
                 {
+                    HttpContext.Session.SetString("UserName", user.userName);
+
+                    HttpContext.Session.SetInt32("UserId", user.userId);
+
+
                     return RedirectToAction("AllmoviesUser");
                 }
                 else
@@ -105,6 +108,73 @@ namespace MovieRentalAppProject.Controllers
             return View(movies);    
         }
 
+        [HttpGet]
+
+        public IActionResult EditProfile()
+        {
+            try
+            {
+                int? userId = HttpContext.Session.GetInt32("UserId");
+                if (!userId.HasValue)
+                {
+                    return RedirectToAction("LogIn", "User");
+                }
+
+                var userProfile = _userServices.GetUserProfile(userId.Value);
+
+                if (userProfile == null)
+                {
+                    return NotFound();
+                }
+
+                return View(userProfile);
+            }
+            catch (InvalidOperationException ex)
+            {
+               
+                return RedirectToAction("LogIn", "User");
+            }
+        }
+
+
+        /*public IActionResult EditProfile()
+        {
+            
+            
+            int userId = (int)HttpContext.Session.GetInt32("UserId");
+            if(userId == null)
+            {
+                return RedirectToAction("LogIn", "User");
+            }
+            var userProfile = _userServices.GetUserProfile(userId);
+
+            if (userProfile == null)
+                return NotFound();
+
+            return View(userProfile);
+        }*/
+
+        [HttpPost]
+        public IActionResult EditProfile(UserModel model)
+        {
+            if (!ModelState.IsValid)
+                return View(model);
+
+            var result = _userServices.UpdateUserProfile(model);
+
+            if (result)
+            {
+                return RedirectToAction("AllmoviesUser");
+            }
+               
+            else
+            {
+                ModelState.AddModelError("", "Failed to update profile. Please try again.");
+
+                return View(model);
+            }
+            
+        }
 
     }
 }

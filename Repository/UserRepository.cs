@@ -43,6 +43,50 @@ namespace MovieRentalAppProject.Repository
             return _movieDbContext.bookings.Where(b => b.userId == id).Select(b=> b.movie).ToList();
         }
 
+        public UserModel GetUserProfile(int uId)
+        {
+            // Retrieve user profile from the database based on the userId
+            var userProfile = _movieDbContext.users
+                .Where(u => u.userId == uId)
+                .Select(u => new UserModel
+                {
+                    userId = u.userId,
+                    firstName = u.firstName,
+                    lastName = u.lastName,
+                    userEmail = u.userEmail,
+                    userLocation = u.userLocation,
+                    userPassword = u.userPassword,
+                    confirmPassword = u.confirmPassword
+                    
+                    
+                })
+                .FirstOrDefault();
+
+            return userProfile;
+        }
+
+        public bool UpdateUserProfile(UserModel model)
+        {
+            // Retrieve the user profile from the database
+            var userProfile = _movieDbContext.users.FirstOrDefault(u => u.userId == model.userId);
+
+            if (userProfile == null)
+                return false;
+
+            // Update the user profile with the new data
+            userProfile.firstName = model.firstName;
+            userProfile.lastName = model.lastName;
+            userProfile.userEmail = model.userEmail;
+           userProfile.userLocation= model.userLocation;
+            userProfile.userPassword = model.userPassword;
+            userProfile.confirmPassword = model.confirmPassword;
+
+            _movieDbContext.SaveChanges();
+
+            return true;
+        }
+
+
 
 
         /*public async Task<UserModel> GetUserByUsernameAsync(string username)

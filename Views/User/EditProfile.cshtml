@@ -1,0 +1,88 @@
+﻿
+
+@model MovieRentalAppProject.Models.UserModel
+
+@{
+    ViewData["Title"] = "UpdateProfile";
+}
+
+<br />
+
+<header>
+    @Html.Partial("NavBarPartialViewUser")
+</header>
+
+<br />
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Edit Your Profile</title>
+</head>
+<body>
+
+<h4>Edit Your Profile</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="EditProfile" asp-controller="User" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="userId" />
+                <div class="form-group">
+                    <label asp-for="firstName" class="control-label">Firstname : </label>
+                    <input asp-for="firstName" class="form-control" placeholder="Enter Firstname " />
+                    <span asp-validation-for="firstName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="lastName" class="control-label">Lastname : </label>
+                    <input asp-for="lastName" class="form-control" placeholder="Enter Firstname " />
+                    <span asp-validation-for="lastName" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="userPassword" class="control-label">Password</label>
+                    <input asp-for="userPassword" type="password" class="form-control" placeholder="Enter Password" />
+                    <span asp-validation-for="userPassword" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="confirmPassword" class="control-label">Confirm Password</label>
+                    <input asp-for="confirmPassword" type="password" class="form-control" placeholder="Re-Enter Password" />
+                    <span asp-validation-for="confirmPassword" class="text-danger"></span>
+                </div>
+
+
+                <div class="form-group">
+                    <label asp-for="userEmail" class="control-label">Email</label>
+                    <input asp-for="userEmail" type="email" class="form-control" placeholder="Enter E-mail Id" />
+                    <span asp-validation-for="userEmail" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="userLocation" class="control-label">Location</label>
+                    <input asp-for="userLocation" class="form-control" placeholder="Enter User Location " />
+                    <span asp-validation-for="userLocation" class="text-danger"></span>
+                </div>
+
+            
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+</body>
+</html>
+
+
+<br />
+<footer>
+    @Html.Partial("FooterView")
+</footer>
+
+
