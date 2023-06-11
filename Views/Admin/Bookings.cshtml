@@ -4,7 +4,15 @@
     ViewData["Title"] = "Movie Bookings";
 }
 
-<h1>Movie Bookings</h1>
+<br />
+
+<header>
+    @Html.Partial("NavBarPartialViewAdmin")
+</header>
+
+<br />
+
+<h2>Movie Bookings</h2>
 
 @if (Model.Count > 0)
 {
@@ -47,7 +55,10 @@ else
 
 
 
-
+<br />
+<footer>
+    @Html.Partial("FooterView")
+</footer>
 
 
 

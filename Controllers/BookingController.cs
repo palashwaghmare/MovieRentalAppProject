@@ -1,9 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using MovieRentalAppProject.Models;
 using MovieRentalAppProject.Services;
 
 namespace MovieRentalAppProject.Controllers
 {
+    [Authorize]
     public class BookingController : Controller
     {
         private readonly IBookingServices _bookingService;

@@ -3,8 +3,15 @@
 @{
     ViewData["Title"] = "AddMovies";
 }
+<br />
 
-<h1>Add New Movies</h1>
+<header>
+    @Html.Partial("NavBarPartialViewAdmin")
+</header>
+
+<br />
+
+<h2>Add New Movies</h2>
 
 
 <hr />
@@ -55,6 +62,12 @@
         </form>
     </div>
 </div>
+
+<br />
+<footer>
+    @Html.Partial("FooterView")
+</footer>
+
 
 @*<div>
     <a asp-action="Allmovies">Back to List</a>

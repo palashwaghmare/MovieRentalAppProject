@@ -5,6 +5,12 @@
 }
 
 <h1>Movie Details</h1>
+<br />
+
+<header>
+    @Html.Partial("NavBarPartialViewUser")
+</header>
+<br />
 
 <div class="card mb-4">
     <img src="data:image/png;base64,@Convert.ToBase64String(Model.ImageData)" class="card-img-top" alt="@Model.movieId">
@@ -16,14 +22,17 @@
         <p class="card-text"><strong>Director : </strong> @Model.director</p>
         <p class="card-text"><strong>Actor : </strong> @Model.actors</p>
         <a class="btn btn-warning" asp-controller="Booking" asp-action="AddBookings" asp-route-id="@Model.movieId">Buy Now</a>
-        <a class="btn btn-danger" asp-action="DeleteMovies" asp-route-id="@Model.movieId">Cancel</a>
-        <a class="btn btn-secondary" asp-action="Allmovies">Back to All Movies</a>
+      @*  <a class="btn btn-danger" asp-action="Allmoview" asp-route-id="@Model.movieId">Cancel</a>*@
+        <a class="btn btn-secondary" asp-controller="User" asp-action="AllmoviesUser">Back to All Movies</a>
         
     </div>
 </div>
 
 
-
+<br />
+<footer>
+    @Html.Partial("FooterView")
+</footer>
 
 
 

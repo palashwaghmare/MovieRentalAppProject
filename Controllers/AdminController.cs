@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Memory;
 using MovieRentalAppProject.Models;
 using MovieRentalAppProject.Services;
 
 namespace MovieRentalAppProject.Controllers
 {
+    [Authorize]
     public class AdminController : Controller
     {
 

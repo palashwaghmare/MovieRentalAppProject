@@ -23,6 +23,12 @@ namespace MovieRentalAppProject.Controllers
             return View();
         }
 
+        [HttpGet]
+        public IActionResult Index()
+        {
+            return View();
+        }
+
         [HttpPost]
         public IActionResult Register(UserModel user)
         {
@@ -49,23 +55,34 @@ namespace MovieRentalAppProject.Controllers
         [HttpPost]
         public IActionResult LogIn(UserModel userModel)
        {
-          
-           UserModel user = _userServices.CheckLogin(userModel.userName,userModel.userPassword);
-            HttpContext.Session.SetString("UserName", user.userName);
-
-            HttpContext.Session.SetInt32("UserId", user.userId);
-
-            if (user != null)
+            if(userModel.userName == "admin" && userModel.userName == "admin")
             {
-                return RedirectToAction("AllmoviesUser");
+                HttpContext.Session.SetString("UserName", userModel.userName);
+                return RedirectToAction("Allmovies", "Admin");
+
             }
             else
             {
-                TempData["ErrorMessage"] = "Inavalid User Credentials";
-                return RedirectToAction("LogIn");
+                UserModel user = _userServices.CheckLogin(userModel.userName, userModel.userPassword);
+                HttpContext.Session.SetString("UserName", user.userName);
+
+                HttpContext.Session.SetInt32("UserId", user.userId);
+
+                if (user != null)
+                {
+                    return RedirectToAction("AllmoviesUser");
+                }
+                else
+                {
+                    TempData["ErrorMessage"] = "Inavalid User Credentials";
+                    return RedirectToAction("LogIn");
+                }
+
+
             }
 
-            
+
+
         }
 
 
@@ -79,7 +96,7 @@ namespace MovieRentalAppProject.Controllers
         public IActionResult LogOut()
         {
             HttpContext.Session.Clear();
-            return RedirectToAction("LogIn");
+            return RedirectToAction("LogIn","User");
         }
 
         public IActionResult GetMoviesBookedByUser(int id)

@@ -3,13 +3,18 @@
 @{
     ViewData["Title"] = "Allmovies";
 }
+<br />
+
+<header>
+    @Html.Partial("NavBarPartialViewAdmin")
+</header>
+
+<br />
+
 
 <h1>Admin Protal</h1>
-<h4>Released Movies</h4>
 
-<p>
-    <a class="btn btn-secondary" asp-action="AddMovies">Add Movie</a>
-</p>
+
 
 <div class="row">
     @foreach (var movie in Model)
@@ -32,6 +37,10 @@
     }
 </div>
 
+<br />
+<footer>
+    @Html.Partial("FooterView")
+</footer>
 
 
 

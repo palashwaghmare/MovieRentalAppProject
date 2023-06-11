@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
 using MovieRentalAppProject.AppDbContext;
 using MovieRentalAppProject.Repository;
@@ -21,6 +22,16 @@ namespace MovieRentalAppProject
             builder.Services.AddScoped<IMovieRepository, MovieRepository>();
             builder.Services.AddScoped<IBookingRepository, BookingRepository>();
             builder.Services.AddScoped<IBookingServices, BookingServices>();
+            builder.Services.AddAuthentication("Cookie").AddCookie("Cookie", config =>
+            {
+                config.Cookie.Name = "MovieRentalAppProject.Cookie";
+                config.LoginPath = "/User/Login";
+            });
+
+            builder.Services.AddAuthorization(config =>
+            {
+                config.DefaultPolicy = new AuthorizationPolicyBuilder().RequireAuthenticatedUser().Build();
+            });
             builder.Services.AddHttpContextAccessor();
             builder.Services.AddSession(options =>
             {
@@ -48,8 +59,7 @@ namespace MovieRentalAppProject
             app.UseSession();
             app.MapControllerRoute(
                 name: "default",
-               //pattern: "{controller=AdminController}/{action=Allmovies}/{id?}");
-               pattern: "{controller=UserController}/{action=Register}/{id?}");
+               pattern: "{controller=User}/{action=Index}/{id?}");
             app.Run();
         }
     }

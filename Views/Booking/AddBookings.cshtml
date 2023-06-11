@@ -3,6 +3,12 @@
 @{
     ViewData["Title"] = "AddBookings";
 }
+<br />
+<header>
+    @Html.Partial("NavBarPartialViewUser")
+</header>
+<br />
+
 
 <h1>Confirm Booking</h1>
 
@@ -61,10 +67,17 @@
 
             <div class="form-group">
                 <input type="submit" value="Confirm" class="btn btn-primary" />
+                <a class="btn btn-danger" asp-controller="User" asp-action="AllmoviesUser" asp-route-id="@Model.movieId">Cancel</a>
             </div>
         </form>
     </div>
 </div>
+
+
+<br />
+<footer>
+    @Html.Partial("FooterView")
+</footer>
 
 @*<div>
     <a asp-action="Index">Back to List</a>

@@ -3,6 +3,13 @@
 @{
     ViewData["Title"] = "Movies Booked by User";
 }
+<br />
+
+<header>
+    @Html.Partial("NavBarPartialViewUser")
+</header>
+
+<br />
 
 <h1>Movies Booked by @Accessor.HttpContext.Session.GetString("UserName") </h1>
 
@@ -36,5 +43,9 @@ else
 {
     <p>No movies booked by the user.</p>
 }
-
 <a class="btn btn-secondary" asp-action="AllmoviesUser">Back</a>
+<br />
+<footer>
+    @Html.Partial("FooterView")
+</footer>
+

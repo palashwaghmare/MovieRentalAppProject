@@ -1,13 +1,20 @@
 ﻿@model MovieRentalAppProject.Models.UserModel
 
+<br />
 
-<h1>User Profile</h1>
+<header>
+    @Html.Partial("NavBarPartialViewAdmin")
+</header>
+
+<br />
+
+<h3>User Details</h3>
 
 <p><strong>User ID:</strong> @Model.userId</p>
 <p><strong>Name:</strong> @Model.userName</p>
 <p><strong>Email:</strong> @Model.userEmail</p>
 
-<h2>My Bookings</h2>
+<h4>@Model.firstName Bookings</h4>
 
 @if (Model.bookings.Count > 0)
 {
@@ -16,7 +23,7 @@
             <tr>
                 <th>Booking ID</th>
                 <th>Movie ID</th>
-                <th>Movie Name</th>
+                @*<th>Movie Name</th>*@
                 <th>Booking Date</th>
                 
                 <th>Action</th>
@@ -28,13 +35,10 @@
                 <tr>
                     <td>@booking.bookingId</td>
                     <td>@booking.movieId</td>
-                    <td>@booking.movie</td>
+                    @*<td>@booking.movie.movieName</td>*@
                     <td>@booking.bookingTime</td>
                     
-                    <td>
-                        <a href="@Url.Action("DeleteConfirmedBooking", "Booking", new {bookingId = booking.bookingId })" class="btn btn-danger">Delete</a>
-                  
-                    </td>
+                    
                     <td>
                         <a class="btn btn-danger" asp-controller="Booking" asp-action="DeleteBookings" asp-route-id="@booking.bookingId"> Delete </a>
                     </td>
@@ -47,3 +51,9 @@ else
 {
     <p>No bookings found for this user.</p>
 }
+
+
+<br />
+<footer>
+    @Html.Partial("FooterView")
+</footer>

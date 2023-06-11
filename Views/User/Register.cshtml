@@ -3,7 +3,11 @@
 @{
     ViewData["Title"] = "Register";
 }
-
+<br />
+<header>
+    @Html.Partial("NavBarPartialView")
+</header>
+<br />
 
 
 
@@ -46,6 +50,18 @@
                         </div>
 
                         <div class="form-group">
+                            <label class="control-label" asp-for="gender">Gender</label><br />
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" asp-for="gender" type="radio" name="gender" value="Male" checked>
+                                <label class="form-check-label" @*for="genderMale"*@>Male</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" asp-for="gender" type="radio" name="gender" value="Female">
+                                <label class="form-check-label" @* for="genderFemale"*@>Female</label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
                             <label asp-for="userName" class="control-label">Username</label>
                             <input asp-for="userName" class="form-control" placeholder="Enter Username " />
                             <span asp-validation-for="userName" class="text-danger"></span>
@@ -75,17 +91,7 @@
                             <span asp-validation-for="userLocation" class="text-danger"></span>
                         </div>
 
-                        <div class="form-group">
-                            <label class="control-label" asp-for="gender">Gender</label><br />
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" asp-for="gender" type="radio" name="gender"  value="Male" checked>
-                                <label class="form-check-label" @*for="genderMale"*@>Male</label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" asp-for="gender" type="radio" name="gender" value="Female">
-                                <label class="form-check-label"@* for="genderFemale"*@>Female</label>
-                            </div>
-                        </div>
+                       
                         <div class="centerBlock">
                         <div class="form-group">
                             <br />
@@ -93,16 +99,19 @@
                             
                         </div>
 
-                        <div>
-                                <p>Alredy Registered User</p> <a asp-action="LogIn" class="btn btn-primary btn-block">Log In</a>
-                           
-                        </div>
+                        
                         </div>
                     </form>
                 </div>
             </div>
         </div>
     </div>
+
+    <br />
+    <footer>
+        @Html.Partial("FooterView")
+    </footer>
+
 
     @*<div class="row justify-content-center mt-3">
         
