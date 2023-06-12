@@ -1,7 +1,10 @@
 ﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MovieRentalAppProject.Models;
 using MovieRentalAppProject.Services;
+using Newtonsoft.Json;
+using System.Text.Json;
 
 namespace MovieRentalAppProject.Controllers
 {
@@ -59,7 +62,7 @@ namespace MovieRentalAppProject.Controllers
             if(userModel.userName == "admin" && userModel.userName == "admin")
             {
                 HttpContext.Session.SetString("UserName", userModel.userName);
-                return RedirectToAction("Allmovies", "Admin");
+                return RedirectToAction("Allmovies","Admin");
 
             }
             else
@@ -105,7 +108,9 @@ namespace MovieRentalAppProject.Controllers
         public IActionResult GetMoviesBookedByUser(int id)
         {
             var movies = _userServices.GetMoviesBookedByUser(id);
-            return View(movies);    
+
+            
+                return View(movies);    
         }
 
         [HttpGet]

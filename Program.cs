@@ -25,6 +25,8 @@ namespace MovieRentalAppProject
             builder.Services.AddAuthentication("Cookie").AddCookie("Cookie", config =>
             {
                 config.Cookie.Name = "MovieRentalAppProject.Cookie";
+                config.Cookie.HttpOnly = true;
+                config.ExpireTimeSpan = TimeSpan.FromMinutes(5);
                 config.LoginPath = "/User/Login";
             });
 

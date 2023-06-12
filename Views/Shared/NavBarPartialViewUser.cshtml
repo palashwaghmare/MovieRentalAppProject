@@ -1,7 +1,7 @@
 ﻿@*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
-
+@inject IHttpContextAccessor Accessor
 @{
     
 
@@ -18,7 +18,7 @@
                         <a class="nav-link" asp-controller="User" asp-action="AllmoviesUser">HomePage</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" asp-controller="User" asp-action="GetMoviesBookedByUser"> My Movies</a>
+                        <a class="nav-link" asp-controller="User" asp-action="GetMoviesBookedByUser" asp-route-id="@Accessor.HttpContext.Session.GetInt32("UserId")"> My Movies</a>
                     </li>
 
                     <li class="nav-item">

@@ -12,6 +12,13 @@
 </header>
 <br />
 
+@if (TempData["ShowAlert"] != null)
+{
+    <div class="alert alert-danger" role="alert">
+        @TempData["ShowAlert"]
+    </div>
+}
+
 <div class="card mb-4">
     <img src="data:image/png;base64,@Convert.ToBase64String(Model.ImageData)" class="card-img-top" alt="@Model.movieId">
     <div class="card-body">
@@ -21,7 +28,12 @@
         <p class="card-text"><strong>Price : </strong> @Model.rentPrice</p>
         <p class="card-text"><strong>Director : </strong> @Model.director</p>
         <p class="card-text"><strong>Actor : </strong> @Model.actors</p>
-        <a class="btn btn-warning" asp-controller="Booking" asp-action="AddBookings" asp-route-id="@Model.movieId">Buy Now</a>
+
+        @if (TempData["ShowAlert"] == null)
+        {
+            <a class="btn btn-warning" asp-controller="Booking" asp-action="AddBookings" asp-route-id="@Model.movieId">Buy Now</a>
+        }
+        @*<a class="btn btn-warning" asp-controller="Booking" asp-action="AddBookings" asp-route-id="@Model.movieId">Buy Now</a>*@
       @*  <a class="btn btn-danger" asp-action="Allmoview" asp-route-id="@Model.movieId">Cancel</a>*@
         <a class="btn btn-secondary" asp-controller="User" asp-action="AllmoviesUser">Back to All Movies</a>
         

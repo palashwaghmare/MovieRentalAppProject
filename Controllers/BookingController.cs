@@ -5,7 +5,7 @@ using MovieRentalAppProject.Services;
 
 namespace MovieRentalAppProject.Controllers
 {
-    [Authorize]
+    
     public class BookingController : Controller
     {
         private readonly IBookingServices _bookingService;
@@ -19,7 +19,12 @@ namespace MovieRentalAppProject.Controllers
         public IActionResult MovieDetails(int id)
         {
             MovieModel movie = _movieService.GetMovieById(id);
-            
+            if(movie.movieId == id)
+            {
+                TempData["ShowAlert"] = "Movie Already Added";
+            }
+           
+
             return View(movie);
         }
 

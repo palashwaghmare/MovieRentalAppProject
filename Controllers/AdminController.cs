@@ -1,12 +1,13 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.Extensions.Caching.Memory;
 using MovieRentalAppProject.Models;
 using MovieRentalAppProject.Services;
 
 namespace MovieRentalAppProject.Controllers
 {
-    [Authorize]
+    
     public class AdminController : Controller
     {
 
@@ -27,8 +28,11 @@ namespace MovieRentalAppProject.Controllers
             List<BookingModel> bookings = _bookingsServices.GetAllBookings();
             return View(bookings);
         }
+
+        
         public IActionResult Allmovies()
         {
+            HttpContext.Session.GetString("UserName");
             List<MovieModel> allMovies = _movieServices.GetAllMovies();
             return View(allMovies);
         }
