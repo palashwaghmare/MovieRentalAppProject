@@ -19,11 +19,6 @@ namespace MovieRentalAppProject.Controllers
         public IActionResult MovieDetails(int id)
         {
             MovieModel movie = _movieService.GetMovieById(id);
-            if(movie.movieId == id)
-            {
-                TempData["ShowAlert"] = "Movie Already Added";
-            }
-           
 
             return View(movie);
         }

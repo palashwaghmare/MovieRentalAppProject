@@ -22,18 +22,9 @@ namespace MovieRentalAppProject
             builder.Services.AddScoped<IMovieRepository, MovieRepository>();
             builder.Services.AddScoped<IBookingRepository, BookingRepository>();
             builder.Services.AddScoped<IBookingServices, BookingServices>();
-            builder.Services.AddAuthentication("Cookie").AddCookie("Cookie", config =>
-            {
-                config.Cookie.Name = "MovieRentalAppProject.Cookie";
-                config.Cookie.HttpOnly = true;
-                config.ExpireTimeSpan = TimeSpan.FromMinutes(5);
-                config.LoginPath = "/User/Login";
-            });
+          
 
-            builder.Services.AddAuthorization(config =>
-            {
-                config.DefaultPolicy = new AuthorizationPolicyBuilder().RequireAuthenticatedUser().Build();
-            });
+            
             builder.Services.AddHttpContextAccessor();
             builder.Services.AddSession(options =>
             {

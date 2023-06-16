@@ -109,7 +109,6 @@ namespace MovieRentalAppProject.Controllers
         {
             var movies = _userServices.GetMoviesBookedByUser(id);
 
-            
                 return View(movies);    
         }
 
